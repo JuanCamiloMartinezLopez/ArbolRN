@@ -233,8 +233,10 @@ public class Arbol_RN<T extends Comparable<T>>
 			if(dNode.Hijoizq.hoja == false && dNode.Hijoder.hoja == false)
 			{
 				T sValue = sucesor(dNode);
+				String sNombre= sucesorNombre(dNode);
 				eliminar(sucesor(dNode));
 				dNode.valorNodo = sValue;
+				dNode.nombreNodo=sNombre;
 			}
 			else
 			{
@@ -478,6 +480,16 @@ public class Arbol_RN<T extends Comparable<T>>
 			p = p.Hijoizq;
 		}
 		return p.valorNodo;
+	}
+	private String sucesorNombre(Nodo<T> dNode)
+	{
+		Nodo<T> p = null;
+		p = dNode.Hijoder;
+		while(p.Hijoizq.hoja == false)
+		{
+			p = p.Hijoizq;
+		}
+		return p.nombreNodo;
 	}
 }
 

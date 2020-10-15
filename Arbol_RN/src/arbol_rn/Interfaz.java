@@ -42,11 +42,12 @@ public class Interfaz extends JFrame{
 	public JTextField IngresarNombre;
 	public JTextField EliminarCodigo;
 	public Graphics g;
+	public JFrame f;
 	public Arbol_RN<Integer> arbolRN;
 	
 	public Interfaz() {
 		this.arbolRN=new Arbol_RN<>();;
-		JFrame f= this;
+		//f= this;
 		f = new JFrame("Arbol Rojinegro");
 		f.setLocationRelativeTo(null);
 		f.setLayout(null);
@@ -113,6 +114,8 @@ public class Interfaz extends JFrame{
 					System.out.println(error.toString());	
 					pintarMensaje("Codigo Invalido");
 				}
+				IngresarNombre.setText("");
+				IngresarCodigo.setText("");
 			}  
 	    });
 		control.add(Ingresar);
@@ -142,9 +145,10 @@ public class Interfaz extends JFrame{
 					}
 					
 				}catch(Exception error) {
-					System.out.println(error.toString());	
+					System.out.println(error);	
 					pintarMensaje("Codigo Invalido");
 				}
+				EliminarCodigo.setText("");
 			}
 			
 		});
@@ -158,8 +162,9 @@ public class Interfaz extends JFrame{
 	{
 		lienzo.paint(g);
 		Graphics2D g2 = (Graphics2D) g;
+		g.clearRect(0,0,lienzo.getWidth(),lienzo.getHeight());
 		paintArbolRN(arbolRN.raizArbol, g2, (lienzo.getWidth()/2)-13, 5, 0);
-		pintarInOrden(arbolRN.inOrder(arbolRN.raizArbol));
+		//pintarInOrden(arbolRN.inOrder(arbolRN.raizArbol));
 		
 	}
 	
@@ -174,6 +179,7 @@ public class Interfaz extends JFrame{
 	}
 	private void paintArbolRN(Nodo node, Graphics2D g, int x, int y, int level)
 	{
+		
 		if(node != null)
 		{
 			int nodeR = nodeD/2;
