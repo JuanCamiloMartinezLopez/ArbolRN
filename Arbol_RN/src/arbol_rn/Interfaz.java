@@ -162,7 +162,6 @@ public class Interfaz extends JFrame{
 	{
 		lienzo.paint(g);
 		Graphics2D g2 = (Graphics2D) g;
-		g.clearRect(0,0,lienzo.getWidth(),lienzo.getHeight());
 		paintArbolRN(arbolRN.raizArbol, g2, (lienzo.getWidth()/2)-13, 5, 0);
 		//pintarInOrden(arbolRN.inOrder(arbolRN.raizArbol));
 		
